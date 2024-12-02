@@ -50,7 +50,7 @@ class _SignupScreenState extends State<SignupScreen> {
     try {
       await authService.signUpWithEmailAndPassword(email, password);
 
-      Navigator.pop(context);
+      // Navigator.pop(context);
     } catch (error) {
       if (mounted) {
         showCupertinoDialog(

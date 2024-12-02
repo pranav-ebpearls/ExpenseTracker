@@ -1,6 +1,7 @@
 import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:expense_tracker_pranav/auth/auth_service.dart';
 import 'package:expense_tracker_pranav/main.dart';
+import 'package:expense_tracker_pranav/modules/profile_screen/profile_screen.dart';
 import 'package:expense_tracker_pranav/ui_components/custom_button.dart';
 import 'package:expense_tracker_pranav/ui_components/custom_password_textfield.dart';
 import 'package:expense_tracker_pranav/ui_components/custom_textfield.dart';
@@ -33,8 +34,11 @@ class _LoginScreenState extends State<LoginScreen> {
     // attempt login
     try {
       await authService.signInWithEmailAndPassword(email, password);
-
-      await supabase.auth.refreshSession();
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (ctx) => const ProfileScreen(),
+        ),
+      );
     } catch (error) {
       if (mounted) {
         showCupertinoDialog(
